@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proposal Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(120deg, #ff9a9e, #fecfef);
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Card Animation */
+        .card {
+            background: white;
+            width: 450px;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: zoomIn 1.2s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0.4); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Typing Animation */
+        .typing {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff4d6d;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            border-right: 3px solid #ff4d6d;
+            animation: typing 3s steps(30) forwards, blink 0.6s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes typing {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        p {
+            font-size: 18px;
+            color: #444;
+            animation: fadeIn 2s ease forwards;
+            opacity: 0;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Buttons */
+        .btn button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 20px 10px 0;
+            transition: 0.3s;
+        }
+
+        .yes {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        .yes:hover {
+            transform: scale(1.1);
+            background: #d63357;
+        }
+
+        .no {
+            background: #e7e7e7;
+        }
+
+        .no:hover {
+            transform: scale(1.1);
+            background: #bbb;
+        }
+
+        /* Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: floatUp 4s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-600px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="typing">Will You Be Mine? M........ 💖</div>
+
+        <p>I really love you from the bottom of my heart...  
+           Will you spend the rest of your life with me? 🥺💘</p>
+
+        <div class="btn">
+            <button class="yes" onclick="alert('Yesss!! I Love You ❤️')">Yes 💘</button>
+            <button class="no" onclick="alert('Please think again 😢')">No 😔</button>
+        </div>
+    </div>
+
+    <script>
+        // Floating hearts generator
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = "100vh";
+            heart.style.fontSize = (20 + Math.random() * 20) + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        setInterval(createHeart, 250);
+    </script>
+
+</body>
+</html>
